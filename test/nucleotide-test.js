@@ -1,16 +1,23 @@
 'use strict';
 const codon = require('central-dogma');
-const assert = require('assert');
+const should = require('chai').should();
 
 describe('Nucleotide Functions Test', () => {
+  const nucleotideString = 'ATGAATGCTACACATGCGAACTGA';
 
-  //declare variables here
-  beforeEach(() => {
+  it('should generate dna complement', () => {
+    const dnaComplement = 'TACTTACGATGTGTACGCTTGACT';
+    const complement = codon.dnaStrToComplement(nucleotideString);
 
+    complement.should.equal(dnaComplement);
   });
 
-  it('should do a thing', done => {
+  it('should return initial string when converting complement to complement', () => {
+    const dnaComplement = 'TACTTACGATGTGTACGCTTGACT';
+    const complement = codon.dnaStrToComplement(nucleotideString);
+    const initialSequence = codon.dnaStrToComplement(complement);
 
+    initialSequence.should.equal(nucleotideString);
   });
 
 });
