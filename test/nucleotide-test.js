@@ -1,23 +1,33 @@
 'use strict';
-const codon = require('central-dogma');
+const nuc = require('central-dogma').nucleotide;
 const should = require('chai').should();
 
 describe('Nucleotide Functions Test', () => {
   const nucleotideString = 'ATGAATGCTACACATGCGAACTGA';
 
-  it('should generate dna complement', () => {
-    const dnaComplement = 'TACTTACGATGTGTACGCTTGACT';
-    const complement = codon.dnaStrToComplement(nucleotideString);
+  it('should convert nucleotide string to numerical string and back to nucleotide', () => {
+    const valueString = '203220310212120313221032';
+    const convertedToValue = nuc.toValue(nucleotideString);
+    const convertedBackToNucleotide = nuc.toSequence(convertedToValue);
 
-    complement.should.equal(dnaComplement);
+    convertedToValue.should.equal(valueString);
+    convertedBackToNucleotide.should.equal(nucleotideString);
   });
 
-  it('should return initial string when converting complement to complement', () => {
-    const dnaComplement = 'TACTTACGATGTGTACGCTTGACT';
-    const complement = codon.dnaStrToComplement(nucleotideString);
-    const initialSequence = codon.dnaStrToComplement(complement);
+  it('should convert from dna to rna and back', () => {
+    const rnaString = 'AUGAAUGCUACACAUGCGAACUGA';
+    const toRna = nuc.dnaToRna(nucleotideString);
+    const toDna = nuc.rnaToDna(toRna);
 
-    initialSequence.should.equal(nucleotideString);
+    toRna.should.equal(rnaString);
+    toDna.should.equal(nucleotideString);
+  });
+
+  it('should split a nucleotide sequence into triplet codons', () => {
+    const codonSplit = nuc.toCodon(nucleotideString);
+    for (const codon of codonSplit) {
+      codon.length.should.equal(3);
+    }
   });
 
 });
