@@ -29,5 +29,4 @@ describe('Nucleotide Functions Test', () => {
       codon.length.should.equal(3);
     }
   });
-
 });

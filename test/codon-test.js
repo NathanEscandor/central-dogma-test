@@ -1,8 +1,6 @@
 'use strict';
-// const cod = require('central-dogma').codon;
-const cod = require('../../codon/index.js').codon; //used for testing locally
+const cod = require('central-dogma').codon;
 const should = require('chai').should();
-
 
 describe('Codon Functions Test', () => {
   const codonArray = [ 'ATG', 'AAT', 'GCT', 'ACA', 
@@ -60,6 +58,4 @@ describe('Codon Functions Test', () => {
       aminoAcids[i].should.equal(correctAminoAcids[i]);
     }
   }); 
-
-
 });

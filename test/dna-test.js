@@ -33,5 +33,4 @@ describe('DNA Nucleotide Functions Test', () => {
     nuc.toComplement(rnaString).should.fail();
   });
   */
-
 });
