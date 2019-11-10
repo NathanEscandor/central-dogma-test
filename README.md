@@ -3,6 +3,7 @@ Repository used for testing my 'central-dogma' npm package and keeping track of 
 
 Todo:
 - Update readme with a list of all the functions in nucleotide and codon
+- Look into method chaining. Could I make it do something like... nuc.toComplement('ATT').dnaToRna() to save lines of code?
 - Should I write tests for tables.js? 
 - Throw errors on incorrect input (dd into errors in js)
 - Look into typescriptifying the package 
